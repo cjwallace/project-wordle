@@ -16,7 +16,7 @@ function Game() {
 
   return (
     <React.Fragment>
-      <GuessResults guesses={guesses} />
+      <GuessResults guesses={guesses} answer={answer} />
       <Input setGuesses={setGuesses} />
     </React.Fragment>
   );
