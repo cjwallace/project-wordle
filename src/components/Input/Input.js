@@ -1,6 +1,6 @@
 import React from "react";
 
-function Input({ setGuesses }) {
+function Input({ handleGuess, disabled }) {
   const [guess, setGuess] = React.useState("");
 
   const handleChange = (event) => {
@@ -10,10 +10,7 @@ function Input({ setGuesses }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log({ guess: guess.toUpperCase() });
-    setGuesses((guesses) => [
-      ...guesses,
-      { guess: guess.toUpperCase(), id: crypto.randomUUID() },
-    ]);
+    handleGuess(guess.toUpperCase());
     setGuess("");
   };
 
@@ -27,6 +24,7 @@ function Input({ setGuesses }) {
         onChange={handleChange}
         pattern="[A-Za-z]{5}"
         title="5-letter word"
+        disabled={disabled}
       />
     </form>
   );
